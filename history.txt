@@ -1,0 +1,89 @@
+  451  mkdir week9; cd week9
+  452  git init
+  453  gh repo create lab9 --public
+  454  nano validate-data.sh
+  455  bash validate-data.sh "pearse mccarthy" "0831122334"
+  456  nano validate-data.sh
+  457  bash validate-data.sh "pearse mccarthy" "0831122334"
+  458  bash validate-data.sh "pearse mccarthy" "083112233222222222222222224"
+  459  bash validate-data.sh "pearse mfgfgfgfccarthy" "0831122334"
+  460  nano basictests.yml
+  461  l
+  462  rm basictests.yml
+  463  ls
+  464  cd .github
+  465  mkdir  .github/workflows
+  466  mkdir -p .github/workflows
+  467  cd .github/workflows
+  468  nano basictests.yml
+  469  git status
+  470  git add .
+  471  git status
+  472  git rm --cached basictests.yml
+  473  git status
+  474  cd ..; cd ..
+  475  ls
+  476  git status
+  477  git add validate-data.sh
+  478  git commit -m "fixes issue #2"
+  479  git checkout main
+  480  git checkout -b main
+  481  git status
+  482  git push origin main
+  483  git remote add origin git@github.com:EmmanFulfilled/lab9.git
+  484  git push origin main
+  485  cd .github/workflows
+  486  git status
+  487  git add .
+  488  git status
+  489  git commit -m ".yml added Closes issue #3"
+  490  git push origin main
+  491  gh issue list
+  492  gh issue close 2
+  493  gh issue close 3
+  494  gh issue create --title "create test branch" --label enhancement --assignee @me --body "Branch for changing max name length to 20"
+  495  git checkout -b test
+  496  cd ;;
+  497  cd ..; cd ..
+  498  l
+  499  git status
+  500  nano validate-data.sh
+  501  cd devops26
+  502  l
+  503  cd week9
+  504  git init
+  505  git status
+  506  git add .
+  507  git commit -m "changed in test branch"
+  508  git push origin test
+  509  nano validate-data.sh
+  510  git commit -m "changed in test branch"
+  511  git sadd .
+  512  git add .
+  513  git commit -m "changed in test branch"
+  514  git push origin test
+  515  git branch                                  # star should be next to test
+  516  git log --oneline -3 origin/test            # your 15 to 20 commit should be here
+  517  cat .github/workflows/basictests.yml        # check the on: section
+  518  gh run list                                 # look at the BRANCH column
+  519  git checkout test
+  520  nano .github/workflows/basictests.yml
+  521  git commit -am "Run workflow on main and test, update FAIL test for 20 char limit"
+  522  git push
+  523  gh run list
+  524  git push -u origin test
+  525  gh run list
+  526  git show --stat HEAD
+  527  git show HEAD
+  528  nano .github/workflows/basictests.yml
+  529  git commit -am "Run workflow on main and test branches"
+  530  git push
+  531  gh run list
+  532  gh run view 42615891994 --log-failed
+  533  cat validate-data.sh
+  534  nano validate-data.sh
+  535  git commit -am "Set name limit to 20 and number limit to 10"
+  536  git push
+  537  gh run list
+  538  gh run view 42616217174 --log
+  539  history
