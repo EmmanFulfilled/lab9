@@ -1,0 +1,21 @@
+name: basictests
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  lab9-basic-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run and verify output
+        run: |
+          chmod +x validate-data.sh
+          ./validate-data.sh "Emmanuel" "0871234567"
+          ./validate-data.sh "Emmanuel Fulfilled" "0871234567"
+          ./validate-data.sh "Emmanuel" "08712345678"
+          [ "$(./validate-data.sh "Emmanuel" "0871234567")" = "PASS" ]
+          [ "$(./validate-data.sh "Emmanuel Fulfilled" "0871234567")" = "FAIL" ]
+          [ "$(./validate-data.sh "Emmanuel" "08712345678")" = "FAIL" ]
